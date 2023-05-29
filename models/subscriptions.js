@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Defining the Schema
 const subscriptionSchema = new mongoose.Schema({
     email: {
       type: String,
@@ -8,6 +9,8 @@ const subscriptionSchema = new mongoose.Schema({
     },
   });
   
+  // Compile the Model
   const Subscription = mongoose.model('Subscription', subscriptionSchema);
   
+  // Export the Model
   module.exports = Subscription;
