@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=product.name%></title>
+</head>
+<body>
+     <h1><%=product.name%></h1>
+     <br>
+     <ul>
+        <li><strong>Price:</strong> $<%=product.price%></li>
+        <li style="text-transform: capitalize;"><strong>Category:</strong> <%=product.category%></li>
+        <li><strong>Sizes Available:</strong> 
+            <% Object.entries(product.size).forEach(([size, value]) => { %>
+                <ul>
+                <% if (value) { %>
+                    <li><%= size %></li> 
+                <% } %>
+                </ul>         
+            <% }); %>            
+        </li>
+        <li><strong>Quantity:</strong>
+            <ul>
+                <li>Online - <%=product.qty.online%></li>
+                <li>In-Store - <%=product.qty.inStore%></li>
+            </ul>             
+        </li>
+     </ul>
+</body>
+</html>

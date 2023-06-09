@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+</head>
+<body>
+    <h1 style="text-align: center;" >Create a new Product</h1>
+    <form action="/products" method="POST">
+        <div>
+            <label for="name"><strong>Product Name : </strong></label>
+            <input type="text" name="name" id="name" placeholder="Product name">
+        </div>
+        <br>
+        <div>
+            <label for="price"><strong>Price : </strong></label>
+            <input type="number" name="price" id="price" placeholder="Price">
+        </div>
+        <br>
+        <div>
+            <label for="category"><strong>Select Category : </strong></label>
+            <select name="category" id="category">
+                <option value="tunics">Tunics</option>
+                <option value="tops">Tops</option>
+                <option value="dresses">Dresses</option>
+                <option value="abayas">Abayas</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <label><strong>Select Sizes : </strong></label><br>
+            <label><input type="checkbox" name="size.small" value=true> Small - 'S' </label><br>
+            <label><input type="checkbox" name="size.medium" value=true> Medium - 'M' </label><br>
+            <label><input type="checkbox" name="size.large" value=true> Large - 'L' </label><br>
+            <label><input type="checkbox" name="size.extraLarge" value=true> Extra Large - 'XL' </label><br>
+        </div>
+        <br> 
+        <div>
+            <label><strong>Quantity : </strong></label><br>
+            <label for="qty.online"><strong>Online : </strong><input type="number" name="qty.online" id="qty.online" placeholder="Qty"></label><br>
+            <label for="qty.inStore"><strong>In-Store : </strong><input type="number" name="qty.inStore" id="qty.inStore" placeholder="Qty"></label><br>
+        </div>
+        <br>       
+        <div>
+            <button><strong>Submit</strong></button>
+        </div>
+    </form>
+
+</body>
+</html>

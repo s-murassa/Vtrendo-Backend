@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+// const { v4: getId } = require('uuid');
 const mongoose = require('mongoose');
+const Product = require('./models/products');
 const Subscription = require('./models/subscriptions');
  
 // Connect to MongoDB
@@ -15,20 +17,48 @@ async function main() {
 
 // Create an Express app
 const app = express(); 
-app.use(cors());
+// getId();
 // Middleware
-app.use(express.json());
+app.use(cors());
+app.use(express.json()); // For parsing JSON responses
+app.use(express.urlencoded({ extended: true })); // For parsing Form urlencoded responses
 // Set
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
-app.get('/', (req, res) => {
-  res.send("Hello World");
+// GET Routes
+app.get('/', (req, res) => { //get index page
+  res.render('index');
 });
 
-// Define a route to handle the POST request
-app.post('/api/subscription', async (req, res) => {
+app.get('/products', async (req, res) => { //get all products
+  const products = await Product.find({});
+  console.log(products);
+  res.render('products/allProducts', { products });
+});
+
+app.get('/products/new', (req, res) => { //get form for creating a product
+  res.render('products/createProduct');
+});
+
+app.get('/products/:id', async (req, res) => {
+  const { id } = req.params;
+  const product  = await Product.findById(id);
+  console.log(product);
+  res.render('products/productDetails', { product });
+});
+
+
+
+// POST routes
+
+app.post('/products', async (req, res) => { //post a newly created product
+  const newProduct = new Product(req.body);
+  await newProduct.save();
+  res.redirect(`/products/${newProduct.id}`);
+});
+
+app.post('/api/subscription', async (req, res) => {  // Subscribed emails intake
   try {
     // Extract the data from the request body
     const { email } = req.body;

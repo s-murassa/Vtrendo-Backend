@@ -10,12 +10,32 @@ const productSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        min: 0
+        min: [0, 'Price must be positive']
     },
     category: {
         type: String,
         lowercase: true,
-        enum: ['Tunics', 'Tops', 'Dresses']
+        enum: ['tunics', 'tops', 'dresses', 'abayas']
+    },
+    onSale: {
+        type: Boolean,
+        default: false
+    },
+    qty: {
+        online: {
+            type: Number,
+            default: 0
+        },
+        inStore: {
+            type: Number,
+            default: 0
+        }
+    },
+    size: {
+        small: { type: Boolean, default: false },
+        medium: { type: Boolean, default: false },
+        large: { type: Boolean, default: false },
+        extraLarge: { type: Boolean, default: false }
     }
 });
 
