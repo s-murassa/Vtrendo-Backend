@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Product</title>
+    <title>Edit Product</title>
 </head>
 <body>
-    <h1 style="text-align: center;" >Create a new Product</h1>
-    <form action="/products" method="POST">
+    <h1 style="text-align: center;" >Edit the Product</h1>
+    <form action="/products/<%= product._id %>?_method=PUT" method="POST">
         <div>
             <label for="name"><strong>Product Name : </strong></label>
-            <input type="text" name="name" id="name" placeholder="Product name">
+            <input type="text" name="name" id="name" placeholder="Product name" value="<%= product.name %>">
         </div>
         <br>
         <div>
             <label for="price"><strong>Price : </strong></label>
-            <input type="number" name="price" id="price" placeholder="Price">
+            <input type="number" name="price" id="price" placeholder="Price" value="<%= product.price %>">
         </div>
         <br>
         <div>
@@ -39,18 +39,23 @@
         <br> 
         <div>
             <label><strong>Quantity : </strong></label><br>
-            <label for="qty.online"><strong>Online : </strong><input type="number" name="qty.online" id="qty.online" placeholder="Qty"></label><br>
-            <label for="qty.inStore"><strong>In-Store : </strong><input type="number" name="qty.inStore" id="qty.inStore" placeholder="Qty"></label><br>
+            <label for="qty.online"><strong>Online : </strong><input type="number" name="qty.online" id="qty.online" placeholder="Qty" value="<%= product.qty.online %>"></label><br>
+            <label for="qty.inStore"><strong>In-Store : </strong><input type="number" name="qty.inStore" id="qty.inStore" placeholder="Qty" value="<%= product.qty.inStore %>"></label><br>
         </div>
         <br>       
         <div>
             <button><strong>Submit</strong></button>
         </div>
+
+        <br>
+        <br>
+        <button><a href="/products/<%= product.id %>">Back to Product Details</a></button>
     </form>
 
     <br>
     <br>
-    <button><a href="/products">Back to All Products</a></button>
+
+    
 
 </body>
 </html>

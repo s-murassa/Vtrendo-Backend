@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products</title>
+    <title>Subscribers</title>
 </head>
 <body>
-    <h1 style="text-align: center">All Products</h1>
+    <h1 style="text-align: center">Subscribers</h1>
     <ul>
-        <% for(let product of products) { %>
-            <li><%= product.name %> - <a href="/products/<%=product._id%>">Details</a></li>
+        <% for(let subscriber of subscribers) { %>
+            <li><%= subscriber.email %></li>
         <% } %>
-        <br>
-        <button><a href="/products/new">Create New Product</a></button>
-        <br>
         <br>
         <button><a href="/">Back to Index Page</a></button>
     </ul>
