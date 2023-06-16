@@ -31,10 +31,10 @@
         <br>
         <div>
             <label><strong>Select Sizes : </strong></label><br>
-            <label><input type="checkbox" name="size.small" value=true> Small - 'S' </label><br>
-            <label><input type="checkbox" name="size.medium" value=true> Medium - 'M' </label><br>
-            <label><input type="checkbox" name="size.large" value=true> Large - 'L' </label><br>
-            <label><input type="checkbox" name="size.extraLarge" value=true> Extra Large - 'XL' </label><br>
+            <label><input type="checkbox" name="size.small" value=true <%=product.size.small ? 'checked': ''%>> Small - 'S' </label><br>
+            <label><input type="checkbox" name="size.medium" value=true <%=product.size.medium ? 'checked': ''%>> Medium - 'M' </label><br>
+            <label><input type="checkbox" name="size.large" value=true <%=product.size.large ? 'checked': ''%>> Large - 'L' </label><br>
+            <label><input type="checkbox" name="size.extraLarge" value=true <%= product.size.extraLarge ? 'checked': ''%>> Extra Large - 'XL' </label><br>
         </div>
         <br> 
         <div>
