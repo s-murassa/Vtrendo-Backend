@@ -22,10 +22,9 @@
         <div>
             <label for="category"><strong>Select Category : </strong></label>
             <select name="category" id="category">
-                <option value="tunics">Tunics</option>
-                <option value="tops">Tops</option>
-                <option value="dresses">Dresses</option>
-                <option value="abayas">Abayas</option>
+                <% for(let category of categories){%>
+                    <option value="<%=category%>" style="text-transform: capitalize;"><%=category%></option>
+                <% } %>                
             </select>
         </div>
         <br>

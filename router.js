@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Product = require('./models/products');
 const Subscription = require('./models/subscriptions');
+const { categories } = require('./masterData');
 
 // GET Routes
 router.get('/', (req, res) => { //get index page
@@ -15,26 +16,26 @@ router.get('/', (req, res) => { //get index page
     res.render('products/allProducts', { products });
   });
   
-  router.get('/products/new', (req, res) => { //get form for creating a product
-    res.render('products/createProduct');
+router.get('/products/new', (req, res) => { //get form for creating a product
+  res.render('products/createProduct', {categories});
   });
   
   router.get('/products/:id', async (req, res) => {
     const { id } = req.params;
     const product  = await Product.findById(id);
-    console.log(product);
+    // console.log(product);
     res.render('products/productDetails', { product });
   });
   
   router.get('/products/:id/edit', async (req, res) => { //get form for editing a product
     const { id } = req.params;
     const product = await Product.findById(id);
-    res.render('products/editProduct', { product });
+    res.render('products/editProduct', { product, categories });
   });
   
   router.get('/subscribers', async (req, res) => { //get all products
     const subscribers = await Subscription.find({});
-    console.log(subscribers);
+    // console.log(subscribers);
     res.render('customers/subscribers', { subscribers });
   });
   
@@ -71,5 +72,12 @@ router.get('/', (req, res) => { //get index page
     res.redirect(`/products/${product.id}`);
   })
 
+  // Delete Routes
+
+router.delete('/products/:id', async (req, res) => { // Delete Product
+  const { id } = req.params;
+  const deletedProduct = await Product.findByIdAndDelete(id);
+  res.redirect('/products');
+});
   
 module.exports = router;
