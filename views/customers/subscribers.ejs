@@ -11,7 +11,11 @@
     <ul>
         <% for(let subscriber of subscribers) { %>
             <li><%= subscriber.email %></li>
+            <form action="/subscribers/<%=subscriber._id%>?_method=DELETE" method="POST">
+                <button>Cancel</button>
+             </form>
         <% } %>
+        <br>
         <br>
         <button><a href="/">Back to Index Page</a></button>
     </ul>

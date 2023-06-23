@@ -79,5 +79,11 @@ router.delete('/products/:id', async (req, res) => { // Delete Product
   const deletedProduct = await Product.findByIdAndDelete(id);
   res.redirect('/products');
 });
+
+router.delete('/subscribers/:id', async (req, res) => { // Delete Product
+  const { id } = req.params;
+  const deletedSubscription = await Subscription.findByIdAndDelete(id);
+  res.redirect('/subscribers');
+});
   
 module.exports = router;
